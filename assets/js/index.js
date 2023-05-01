@@ -7,64 +7,76 @@ let getPkmn = () =>{
     let pkmnName = nameRef.value;
     let url = `https://pokeapi.co/api/v2/pokemon/${pkmnName}`;
 
-    //empty field
-    if(pkmnName.length <= 0){
-        pageBody.innerHTML = `<h3 class="msg">Please enter a Pokémon name </h3>`;
-    }
-    else{
-        fetch(url, options)
-        .then(response => response.json())
-        .then((data) => {
+    var http = new XMLHttpRequest();
+    http.open('HEAD', url, false);
+    http.send();
 
-            //pkmn doesn't exists
-            if(data.result.length === 0){
-                pageBody.innerHTML = `<h3 class="msg">Pokémon not Found!</h3>`
-            } 
+    if (http.status != 404){
+            fetch(url)
+            .then(response => response.json())
+            .then((data) => {
 
-            //pkmn exists
-            else{
-                console.log(data.result[0]);
+                console.log(data);
+
+                //elaborate the typing
+                var typeString = "";
+                let typeLenght = data.types.length;
+                for(var i=0; i < typeLenght; i++){
+                    if(i == typeLenght - 1){
+                        typeString = typeString.concat(data.types[i].type.name);
+                    }else{
+                        typeString = typeString.concat(data.types[i].type.name, " ");
+                    }
+                }
+
+                //elaborate the typing
+                var abilityString = "";
+                let abilityLenght = data.abilities.length;
+                for(var i=0; i < abilityLenght; i++){
+                    if(i == abilityLenght - 1){
+                        abilityString = abilityString.concat(data.abilities[i].ability.name);
+                    }else{
+                        abilityString = abilityString.concat(data.abilities[i].ability.name, " ");
+                    }
+                }
 
                 //building the page based on the result
                 pageBody.innerHTML =`<div class="info">
-                                        <img src=${data.result[0].posterURLs.original} class="poster">
-                                        <div class="miscellaneous">
-                                            <h2>${data.result[0].title}</h2>
-                                            <div class="rating">
-                                                <img src="./assets/images/star.png">
-                                                <h4>${(data.result[0].imdbRating)/10}</h4>
-                                            </div>
-                                            <div class="details">
-                                                <span>${data.result[0].type}</span>
-                                                <span>${releaseYear}</span>
-                                                <span>PEGI ${data.result[0].advisedMinimumAudienceAge}</span>
-                                            </div>
-                                            <div class="genre">
-                                                <div>${genresString.split(" ", 3).join("</div><div>")}</div>
-                                            </div>
-                                            <h3>Available on: </h3>
-                                            <div class="stream">
-                                                <div>${streamString.split(" ", 3).join("</div><div>")}</div>
-                                            </div>
-                                            <h3>Youtube Trailer </h3>
-                                            <div class="trailer">
-                                                <a href="${data.result[0].youtubeTrailerVideoLink}" target="_blank">Youtube link</a>
-                                            </div>
+                                        <div class="sprites">
+                                            <img src=${data.sprites.front_default}>
+                                            <img src=${data.sprites.back_default}>
+                                            <img src=${data.sprites.front_shiny}>
+                                            <img src=${data.sprites.back_shiny}>
                                         </div>
-                                    </div>
-                                    <h3>Plot:</h3>
-                                    <p>${data.result[0].overview}</p>
-                                    <h3>Cast:</h3>
-                                    <p>${castString}</p>
+                                        <div class="miscellaneous">
+
+                                            <h2 style="color:#d9bb14;">${data.name}</h2>
+
+                                            <div class="typing">
+                                                <div>${typeString.split(" ", 2).join("</div><div>")}</div>
+                                            </div>
+
+                                            
+                                            <h2> Abilities: </h2>
+                                            <div class="abilities">
+                                                <div>${abilityString.split(" ", 3).join("</div><div>")}</div>
+                                            </div>
+
+                                            
+                                        </div>
                                     `;
-            }   
-        })
-        //error catching
-        .catch(() =>{
-            pageBody.innerHTML = `<h3 class="msg>Error Occured</h3>`;
-            console.log(Error);
-        });
-    }};
+            })
+            //error catching
+            .catch(() =>{
+                pageBody.innerHTML = `<h3 class="msg>Error Occured</h3>`;
+                console.log(Error);
+            });
+        }
+        //pkmn doesn't exist
+        else{
+            pageBody.innerHTML = `<h3 class="errorMsg">Pokémon not Found!</h3>`
+        } 
+    }
 
 searchBtn.addEventListener("click", getPkmn);
 window.addEventListener("load", getPkmn);

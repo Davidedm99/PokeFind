@@ -111,4 +111,54 @@ body{
     cursor: pointer;
 }
 
+.info{
+    position: relative;
+    display: grid;
+    grid-template-columns: 4fr 8fr;
+    margin-top: 1.2em;
+}
 
+.sprites{
+    display: grid;
+    grid-template-columns: auto auto;
+    padding-top: 30px;
+}
+
+h2{
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+ }
+
+.typing{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 7px;
+}
+
+.typing div{
+    border: 1px solid #fff;
+    font-size: 0.75em;
+    padding: 0.4em 1.6em;
+    border-radius: 0.4em;
+    font-weight: 300;
+}
+
+.abilities{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 7px;
+}
+
+.abilities div{
+    border: 1px solid #fff;
+    font-size: 0.75em;
+    padding: 0.4em 1.6em;
+    border-radius: 0.4em;
+    font-weight: 300;
+}
+
+.errorMsg{
+    padding-top: 20px;  
+}
