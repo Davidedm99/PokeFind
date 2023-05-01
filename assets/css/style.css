@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap');
+
+*{
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-image: url('../images/allpokemoncolor.png');
+    background-position: center;
+}
+
+/*ul elements*/
+.navBar{
+    margin: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #343541;
+}
+
+.logo{
+    margin-right: auto;
+}
+
+/*li items*/
+.navBarItems{
+    padding-right: 40px;
+    cursor: pointer; 
+}
+
+/*not working as it should, the text is not coloring yellow*/
+.selection{
+    text-decoration: none;
+    --s: 0.2em;           /* the thickness of the line */
+    --c: #d9bb14;;      /* the color */
+    
+    padding-bottom: var(--s);
+    background: 
+        linear-gradient(90deg,var(--c) 50%,#d9bb14 0) calc(100% - var(--_p,0%))/200% 100%,
+        linear-gradient(var(--c) 0 0) 0% 100%/var(--_p,0%) var(--s) no-repeat;
+    -webkit-background-clip: text,padding-box;
+            background-clip: text,padding-box;
+    transition: 0.5s;
+}
+
+.selection:hover{
+    --_p: 100%
+}
+
+.research{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+.container{
+    font-size: 16px;
+    width: 90vw;
+    max-width: 37.5em;
+    padding: 3em 1.8em;
+    background-color: #343541;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 0.6em;
+    box-shadow: 1.2em 2em 3em rgba(0, 0, 0, 0.2);
+}
+
+.ball{
+    position: absolute;
+    height: 40px;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+.search-box{
+    display: grid;
+    grid-template-columns: 9fr 3fr;
+    gap: 1.2em;
+}
+
+.search-box input, .search-box button{
+    font-size: 0.9em;
+    outline:  none;
+    border-radius: 0.3em;
+}
+
+.search-box input{
+    background-color: transparent;
+    border: 1px solid;
+    color: #fff;
+    padding: 15px;
+    padding-left: 60px;
+    
+}
+
+.search-box input:focus{
+    border-color: #fff;
+}
+
+.search-box button{
+    background-color: #343541;
+    border: none;
+    cursor: pointer;
+}
+
+
