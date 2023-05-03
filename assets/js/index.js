@@ -20,6 +20,7 @@ let getPkmn = () =>{
             .then((data) => {
 
                 console.log(data);
+                let hp = (data.stats[0].base_stat) * 100 / 255;
 
                 //elaborate the typing
                 var typeString = "";
@@ -76,12 +77,16 @@ let getPkmn = () =>{
                                                         <th colspan="2">Base Stats</th>
                                                     </tr>
                                                     <tr>
-                                                        <td class="HPBar">
+                                                        <td class="HPBar" style="width: 3.5em; padding: 0.3ex 0.8ex; background: #E1FFD3;">
                                                             <span style="color:green;">HP</span>
                                                         </td>
-                                                        <td class="HP-RBar">
-                                                            <div class="statValue">
-                                                                <b class="HPValue">${data.stats[0].base_stat}</b>
+                                                        <td class="HP-RBar" style="padding: 0.3ex 0.8ex 0.3ex 1.8ex; min-width: 9em; background: #E1FFD3;">
+                                                            <div class="statValue" style="width:${hp}%; 
+                                                                                            color: #2E7A08; 
+                                                                                            background-size: 100%;
+                                                                                            background-image: -webkit-linear-gradient(left, #E1FFD3, #58E810); 
+                                                                                            background-image: linear-gradient(to right, #E1FFD3, #58E810);">
+                                                                <b class="HPValue" style="color:#006400;">${data.stats[0].base_stat}</b>
                                                             </div>
                                                         </td>
                                                     </tr>

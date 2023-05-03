@@ -177,30 +177,6 @@ th{
     margin-left: 10px;
 }
 
-.HPBar{
-    width: 3.5em; 
-    padding: 0.3ex 0.8ex; 
-    background: #E1FFD3;
-}
-
-.HP-RBar{
-    padding: 0.3ex 0.8ex 0.3ex 1.8ex; 
-    min-width: 9em; 
-    background: #E1FFD3;
-}
-
-.HPValue{
-    color:#006400;
-}
-
-.statValue{
-    width: calc(1em + 14.814814814815%); 
-    color: #2E7A08; 
-    background-size: 100%;
-    background-image: -webkit-linear-gradient(left, #E1FFD3, #58E810); 
-    background-image: linear-gradient(to right, #E1FFD3, #58E810);
-}
-
 .ATKBar{
     width: 3.5em; 
     padding: 0.3ex 0.8ex; 
